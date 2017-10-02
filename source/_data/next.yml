@@ -74,7 +74,7 @@ theme: next
 deploy:
 - type: git
   repo: git@github.com:LiuYueKai/blog.git
-  branch: coding-pages
+  branch: master
 
 # feed:
 #   type: atom

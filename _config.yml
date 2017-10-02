@@ -74,7 +74,7 @@ theme: next
 deploy:
 - type: git
   repo: git@github.com:LiuYueKai/blog.git
-  branch: coding-pages
+  branch: master
 
 # feed:
 #   type: atom
@@ -108,7 +108,7 @@ deploy:
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `hexo-site/source/` directory.
-# favicon: /favicon.ico
+favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
 keywords: "刘月凯"
