@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[面包屑&关闭提示]]></title>
+    <url>%2Fblog%2F2017%2F10%2F%E6%8A%80%E6%9C%AF-%E9%9D%A2%E5%8C%85%E5%B1%91-%E5%85%B3%E9%97%AD%E6%8F%90%E7%A4%BA%2F</url>
+    <content type="text"><![CDATA[面包屑需求描述在页面内部要显示当前页面的路径信息 实现的核心代码12345678var hash = window.location.hash;hash = hash.slice(2);try &#123; var menus = parent.window.getBreadcrumb(hash); this.element.innerHTML = menus.join(" / ");&#125; catch (e) &#123; console.log(e);&#125; 通过当前页面的url获取应用id，然后调用父层window上提供的接口getBreadcrumb来获取路径信息 关闭提示需求描述当关闭portal中的页面时需要增加判断，如果存在修改则不进行关闭 实现的核心代码123456789101112131415161718192021222324window.confirmClose = function(id,data)&#123; var flag = 1; // 判断单表档案的弹框界面是否显示 if($("#dialog_layer").is(":visible"))&#123; flag = 0; &#125; //判断主子页面的单据子页面是否显示 if($(".ui-panel.ui-bill-panel").is(":visible"))&#123; flag = 0; &#125; // 如果处于浏览态直接关闭页签,处于编辑态弹框提醒,确认后关闭页签 if(flag)&#123; window.parent.confirmDel(data) &#125;else&#123; $.confirmDialog(&#123; msg1: "当前页面数据还未保存，是否关闭", msg2: '此操作不可逆', width: "400px", onOk: function () &#123; window.parent.confirmDel(data) &#125; &#125;); &#125;&#125; 在页面内实现接口方法confirmClose，当执行关闭操作时portal会调用此方法。 如果允许执行关闭操作，则调用portal已提供的方法window.parent.confirmDel(data)]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[多语支持方案]]></title>
+    <url>%2Fblog%2F2017%2F10%2F%E9%9A%8F%E7%AC%94-%E5%A4%9A%E8%AF%AD%E6%94%AF%E6%8C%81%E6%96%B9%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[多语方案主要有2种实现方式 i18n.js针对对js文件进行多语方案说明 json文件存储多语资源 通过i18n.js提供的接口来实现读取多语资源文件并封装方法trans用于获取具体的多语资源 功能源码中调用trans方法来获取多语资源核心代码 json文件 123456789&#123; "gridComp": &#123; "show_column": "显示 隐藏列", "clear_set": "清除设置", "no_rows": "无数据", "sum": "合计:", "close":"关闭" &#125;&#125; trans方法 12345678910111213141516171819if (window.i18n) &#123; window.u = window.u || &#123;&#125;; var scriptPath = getCurrentJsPath(), _temp = scriptPath.substr(0, scriptPath.lastIndexOf('/')), __FOLDER__ = _temp.substr(0, _temp.lastIndexOf('/')), resGetPath = u.i18nPath || __FOLDER__ + '/locales/__lng__/__ns__.json'; i18n.init(&#123; postAsync: false, getAsync: false, fallbackLng: false, ns: &#123;namespaces: ['uui-trans']&#125;, lng:getCookie(U_LOCALE) || 'zh', resGetPath: resGetPath &#125;)&#125;var trans = function (key, dftValue) &#123; return window.i18n ? i18n.t('uui-trans:' + key) : dftValue&#125; 功能代码 1234567this.gridOptions.transMap = &#123; ml_show_column: trans('gridComp.show_column', '显示/隐藏列'), ml_clear_set: trans('gridComp.clear_set', '清除设置'), ml_no_rows: trans('gridComp.no_rows', '无数据'), ml_sum: trans('gridComp.sum', '合计:'), ml_close: trans('gridComp.close', '关闭') &#125;; webpack对所有源码进行多语方案说明页面源码为index.htlm以及index.js，同时配置多语资源json文件与源码中需要多语的内容进行对应。download-overtext.html借助webpack产出多语文件：中文为index.zh.html以及index.zh.js，英文为index.en.html以及index.en.js 核心代码可参照git@github.com:GuoYongfeng/i18n-webpack-demos.git]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+</search>
