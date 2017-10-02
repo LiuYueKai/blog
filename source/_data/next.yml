@@ -85,22 +85,26 @@ deploy:
 # sitemap:
 #   path: sitemap.xml
 
-# search: true
+search: true
 
-# algolia:
-#   appId: 'XILKIWTAM9'
-#   applicationID: 'XILKIWTAM9'
-#   apiKey: '99d43a85f328d00214c5de8007ce7920'
-#   adminApiKey: 'b38bccd205919992ffec326444bd3451'
-#   indexName: 'blog'
-#   chunkSize: 5000
-#   fields:
-#     - title
-#     - date
-#     - slug
-#     - permalink
-#     - excerpt
-#     - excerpt:strip
+algolia:
+  appId: 'WT9H46007Y'
+  applicationID: 'WT9H46007Y'
+  apiKey: '54260b3c94fb60e80399a0df6897117d'
+  adminApiKey: 'ec0edcae3bfb8768bf70bd68f1862941'
+  indexName: 'lt'
+  chunkSize: 5000
+  fields:
+    - title
+    - date
+    - slug
+    - permalink
+    - excerpt
+    - excerpt:strip
+    - raw
+    - raw:strip
+    - content
+    - content:strip
 
 
 # ---------------------------------------------------------------
@@ -560,7 +564,7 @@ busuanzi_count:
   site_uv_header: <i class="fa fa-user"></i>
   site_uv_footer:
   # custom pv span for the whole site
-  site_pv: false
+  site_pv: true
   site_pv_header: <i class="fa fa-eye"></i>
   site_pv_footer:
   # custom pv span for one page only
