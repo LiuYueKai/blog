@@ -1,0 +1,1 @@
+npm install -g cnpm --registry=http://r.cnpmjs.org
